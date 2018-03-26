@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sabrina Palm | CalcHub</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <div class="calculator">
+  	<header>
+  		<div class="screen"> {{ result }}</div>
+  	</header>
+  	<div class="keypads">
+  		<div class="row">
+        <!--clear-->
+        <span class="operation" @click="clear">C</span>
+        <!--upphöjt i två-->
+  			<span class="operation" @click="raisedInTwo">x<sup>2</sup></span>
+        <!--roten ur-->
+  			<span class="operation" @click="squareRoot">&radic;</span>
+        <!--division-->
+  			<span class="operation" @click="divide">/</span>
+  		</div>
+  		<div class="row">
+        <!--multiplikation-->
+        <span class="operation" @click="multiplicate">x</span>
+        <!--minus-->
+  			<span class="operation" @click="minus">-</span>
+        <!--plus-->
+  			<span class="operation" @click="plus">+</span>
+        <!--är lika med-->
+  			<span class="important" @click="equalTo">=</span>
+  		</div>
+  	</div>
+  	<input type="number" class="input" v-model="result">
+  </div>
+</body>
+</html>
