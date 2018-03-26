@@ -5,31 +5,35 @@ window.addEventListener('load', () => {
     el: '.calculator',
     data: {
         result: '',
+        input: ''
     },
     methods: {
-        clear: () => {
-            this.result = 0;
+        clear: function(event) {
             console.log(`You clicked C`);
+            this.result = 0;
         },
-        raisedInTwo: () => {
-            console.log(`You clicked Raisen In Two`);
+        raisedInTwo: function(event) {
+            this.result = Math.pow(this.result, 2)
+            
         },
-        squareRoot: () => {
-            console.log(`You clicked Square Root`)
+        squareRoot: function(event) {
+            console.log(Math.sqrt(this.result))
+            this.result = Math.sqrt(this.result)
         }, 
-        divide: () => {
+        divide: function(event) {
             console.log(`You clicked Divide`)
+            console.log()
         },
-        multiplicate: () => {
+        multiplicate: function(event) {
             console.log(`You clicked Multiplicate`)
         },
-        minus: () => {
+        minus: function(event) {
             console.log(`You clicked Minus`)
         },
-        plus: () => {
+        plus: function(event) {
         console.log(`You clicked Plus`)
         },
-        equalTo: () => {
+        equalTo: function(event) {
         console.log(`You clicked Equal To`)
         } 
     }
