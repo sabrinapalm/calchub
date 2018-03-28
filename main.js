@@ -1,43 +1,47 @@
 window.addEventListener('load', () => {
 
 
-  new Vue({
+
+
+
+new Vue({
     el: '.calculator',
     data: {
         result: '',
-        input: ''
+        input: '',
+        num: '',
+        operator: ''
     },
     methods: {
-        clear: function(event) {
-            console.log(`You clicked C`);
-            this.result = 0;
+        value: function(event) {
+            this.num += event.target.innerHTML;
+            this.result = this.num;
         },
-        raisedInTwo: function(event) {
+        operation: function(event) {
+          this.num += event.target.innerHTML;
+          this.result = this.num
+          console.log(this.result);
+        },
+        clear: function() {
+            this.result = '';
+            this.input = '';
+            this.num = '';
+        },
+        raisedInTwo: function() {
             this.result = Math.pow(this.result, 2)
-            
         },
-        squareRoot: function(event) {
-            console.log(Math.sqrt(this.result))
+        squareRoot: function() {
             this.result = Math.sqrt(this.result)
-        }, 
-        divide: function(event) {
-            console.log(`You clicked Divide`)
-            console.log()
         },
-        multiplicate: function(event) {
-            console.log(`You clicked Multiplicate`)
-        },
-        minus: function(event) {
-            console.log(`You clicked Minus`)
-        },
-        plus: function(event) {
-        console.log(`You clicked Plus`)
-        },
-        equalTo: function(event) {
-        console.log(`You clicked Equal To`)
-        } 
+        eval: function() {
+          this.result = eval(this.num);
+        }
     }
-  });
+});
+
+
+
+
 
 
 

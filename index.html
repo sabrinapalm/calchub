@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Sabrina Palm | CalcHub</title>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-  <script src="main.js"></script>
-  <link rel="stylesheet" href="main.css">
-</head>
-
-<body>
-  <div class="calculator">
-  	<header>
-  		<div class="screen"> {{ result }} </div>
-  	</header>
-  	<div class="keypads">
-  		<div class="row">
-        <!--clear-->
-        <span class="operation" @click="clear">C</span>
-        <!--upphöjt i två-->
-  			<span class="operation" @click="raisedInTwo">x<sup>2</sup></span>
-        <!--roten ur-->
-  			<span class="operation" @click="squareRoot">&radic;</span>
-        <!--division-->
-  			<span class="operation" @click="divide">/</span>
-  		</div>
-  		<div class="row">
-        <!--multiplikation-->
-        <span class="operation" @click="multiplicate">x</span>
-        <!--minus-->
-  			<span class="operation" @click="minus">-</span>
-        <!--plus-->
-  			<span class="operation" @click="plus">+</span>
-        <!--är lika med-->
-  			<span class="important" @click="equalTo">=</span>
-  		</div>
-  	</div>
-  	<input type="number" class="input" v-model="result">
-  </div>
-</body>
+    <head>
+        <title>calculator</title>
+        <meta charset="UTF-8">
+        <!--<meta http-equiv="refresh" content="0.1" >-->
+        <meta name="viewport" content="width=device-width">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+        <link href="main.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div class="calculator">
+            <header>
+                <div class="screen"> {{result}} </div>
+            </header>
+            <div class="keypads">
+                    <div class="row">
+                        <span class="operation" @click="clear">C</span>
+                        <span class="operation" @click="raisedInTwo">x<sup>2</sup></span>
+                        <span class="operation" @click="squareRoot">&radic;</span>
+                        <span @click="operation" class="operation">/</span>
+                    </div>
+                    <div class="row">
+                        <span @click="value">1</span>
+                        <span @click="value">2</span>
+                        <span @click="value">3</span>
+                        <span @click="operation" class="operation">*</span>
+                    </div>
+                    <div class="row">
+                        <span @click="value">4</span>
+                        <span @click="value">5</span>
+                        <span @click="value">6</span>
+                        <span @click="operation" class="operation">-</span>
+                    </div>
+                    <div class="row">
+                        <span @click="value">7</span>
+                        <span @click="value">8</span>
+                        <span @click="value">9</span>
+                        <span @click="operation" class="operation">+</span>
+                    </div>
+                    <div class="row">
+                        <span @click="value" style="flex: 2 2;">0</span>
+                        <span @click="operation">.</span>
+                        <span @click="eval"class="important">=</span>
+                    </div>
+            </div>
+        </div>
+    </body>
 </html>
