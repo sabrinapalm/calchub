@@ -20,31 +20,31 @@
                     <div class="row">
                         <span class="operation" @click="clear">C</span>
                         <span class="operation" @click="raisedInTwo">x<sup>2</sup></span>
-                        <span class="operation" @click="squareRoot">&radic;</span>
-                        <span @click="operation" class="operation">/</span>
+                        <span class="operation" @click="squareRoot" :disabled="disableButton">&radic;</span>
+                        <span @click="value" class="operation">/</span>
                     </div>
                     <div class="row">
                         <span @click="value">1</span>
                         <span @click="value">2</span>
                         <span @click="value">3</span>
-                        <span @click="operation" class="operation">*</span>
+                        <span @click="value" class="operation">*</span>
                     </div>
                     <div class="row">
                         <span @click="value">4</span>
                         <span @click="value">5</span>
                         <span @click="value">6</span>
-                        <span @click="operation" class="operation">-</span>
+                        <span @click="value" class="operation">-</span>
                     </div>
                     <div class="row">
                         <span @click="value">7</span>
                         <span @click="value">8</span>
                         <span @click="value">9</span>
-                        <span @click="operation" class="operation">+</span>
+                        <span @click="value" class="operation">+</span>
                     </div>
                     <div class="row">
                         <span @click="value" style="flex: 2 2;">0</span>
-                        <span @click="operation">.</span>
-                        <span @click="eval"class="important">=</span>
+                        <span @click="value">.</span>
+                        <span @click="eval" class="important">=</span>
                     </div>
             </div>
         </div>

@@ -1,56 +1,57 @@
 window.addEventListener('load', () => {
-
-
-
-
-
-new Vue({
-    el: '.calculator',
-    data: {
-        result: '',
-        input: '',
-        num: '',
-        operator: ''
-    },
-    methods: {
-        value: function(event) {
-            this.num += event.target.innerHTML;
-            this.result = this.num;
-        },
-        operation: function(event) {
-          this.num += event.target.innerHTML;
-          this.result = this.num
-          console.log(this.result);
-        },
-        clear: function() {
-            this.result = '';
-            this.input = '';
-            this.num = '';
-        },
-        raisedInTwo: function() {
-            this.result = Math.pow(this.result, 2)
-        },
-        squareRoot: function() {
-            this.result = Math.sqrt(this.result)
-        },
-        eval: function() {
-          this.result = eval(this.num);
-        }
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    //Make new Vue object
+	new Vue({
+        
+        //Get element
+		el: '.calculator',
+        
+        //Define data
+		data: {
+			result: '',
+			num: '',
+			operator: '',
+			disableButton: true,
+			listNum: [],
+		},
+        
+        //Define methods/functions
+		methods: {
+            
+            //Get number values (REWRITE THIS FUNCTION CAUSE IT SUX)
+			value: function (event) {
+                this.num += event.target.innerHTML;
+                this.result = this.num;
+			},
+            //Evaluate numbers
+			eval: function (event) {
+				this.result = eval(this.num);
+                this.listNum.push(`${this.num} ${event.target.innerHTML} ${this.result}`);
+				console.log(this.listNum)
+				this.num = '';
+			},
+            //Single function raised in two
+			raisedInTwo: function () {
+				this.result = Math.pow(this.result, 2)
+			},
+            //Single function square root
+			squareRoot: function () {
+				if (this.result < 0) {
+					this.disableButton = true;
+					console.log('disabled')
+				} else {
+					this.result = Math.sqrt(this.result)
+					this.disableButton = false;
+					console.log('enabled')
+				}
+			},
+            //clear numbers and result
+			clear: function () {
+				this.result = '';
+				this.num = '';
+			},
+		}
+	});
 
 
 
