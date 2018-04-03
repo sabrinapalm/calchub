@@ -26,6 +26,7 @@ window.addEventListener('load', () => {
             //Evaluate numbers
 			eval: function (event) {
 				this.result = eval(this.num);
+                Math.round(this.result);
                 this.listNum.push(`${this.num} ${event.target.innerHTML} ${this.result}`);
 				console.log(this.listNum)
 				this.num = '';
