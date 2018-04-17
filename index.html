@@ -14,37 +14,35 @@
     <body>
         <div class="calculator">
             <header>
-                <div class="screen"> {{result}} </div>
+                <div class="screen" v-model="display"> {{display}} </div>
             </header>
             <div class="keypads">
                     <div class="row">
-                        <span class="operation" @click="clear">C</span>
-                        <span class="operation" @click="raisedInTwo">x<sup>2</sup></span>
-                        <span class="operation" @click="squareRoot" :disabled="disableButton">&radic;</span>
-                        <span @click="value" class="operation">/</span>
+                        <span v-on:click="clear" style="flex: 2">C</span>
+                        <span v-on:click="opp('/')">/</span>
                     </div>
                     <div class="row">
-                        <span @click="value">1</span>
-                        <span @click="value">2</span>
-                        <span @click="value">3</span>
-                        <span @click="value" class="operation">*</span>
+                        <span v-on:click="value('1')">1</span>
+                        <span v-on:click="value('2')">2</span>
+                        <span v-on:click="value('3')">3</span>
+                        <span v-on:click="opp('*')">*</span>
                     </div>
                     <div class="row">
-                        <span @click="value">4</span>
-                        <span @click="value">5</span>
-                        <span @click="value">6</span>
-                        <span @click="value" class="operation">-</span>
+                        <span v-on:click="value('4')">4</span>
+                        <span v-on:click="value('5')">5</span>
+                        <span v-on:click="value('6')">6</span>
+                        <span v-on:click="opp('-')">-</span>
                     </div>
                     <div class="row">
-                        <span @click="value">7</span>
-                        <span @click="value">8</span>
-                        <span @click="value">9</span>
-                        <span @click="value" class="operation">+</span>
+                        <span v-on:click="value('7')">7</span>
+                        <span v-on:click="value('8')">8</span>
+                        <span v-on:click="value('9')">9</span>
+                        <span v-on:click="opp('+')">+</span>
                     </div>
                     <div class="row">
-                        <span @click="value" style="flex: 2 2;">0</span>
-                        <span @click="value">.</span>
-                        <span @click="eval" class="important">=</span>
+                        <span v-on:click="value('0')" style="flex: 2 2;">0</span>
+                        <span v-on:click="value('.')">.</span>
+                        <span v-on:click="value('=')" class="important">=</span>
                     </div>
             </div>
         </div>

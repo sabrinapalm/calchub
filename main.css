@@ -69,13 +69,9 @@ body {
 .row .number {
     background: #2c2c2c; }
 
-.row .operation {
-    background: #424242;
-    border-color: #2e2e2e; }
-
 .row .important {
-    background: #04DEAD;
-    border-color: #0E9577; }
+    background: #588C73;
+    border-color: #466551; }
 
 sup {
     font-size: 0.7em;
