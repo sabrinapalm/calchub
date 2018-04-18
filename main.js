@@ -20,7 +20,7 @@ appen ska versionshanteras med Git och vara publicerad på GitHub
 		data: {
             display: '',
             currentNumber: '',
-            lastNumber: [],
+            calculate: [],
             result : '',
             operator: ''
 		},
@@ -41,14 +41,24 @@ appen ska versionshanteras med Git och vara publicerad på GitHub
                 
                 if(value === "+") {
                     
-                    this.lastNumber.push(this.currentNumber);
+                    this.calculate.push(this.currentNumber);
+                    this.calculate.push(value);
                     
                     this.currentNumber = '';
                     
                     this.display = this.currentNumber;
                     
-                    console.log(this.lastNumber);
+                    console.log(this.calculate);
 
+                } else if (value === "=") {
+                    
+                    this.calculate.push(this.currentNumber);
+                    
+                    for (i = 0; i < this.calculate.length; i++) {
+
+                        
+                    }
+                    
                 }
 
             },
