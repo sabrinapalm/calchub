@@ -25,9 +25,7 @@ window.addEventListener('load', () => {
 		//Define methods/functions
 		methods: {
 			value: function (value) {
-				if (this.operator) {
-					this.currentNumber = '';
-				}
+                
 				//check decimalpoint, add 0 if starting with decimalpoint
 				if (this.currentNumber.length == 0 && value == ".") {
 					value = "0.";
@@ -35,15 +33,14 @@ window.addEventListener('load', () => {
 				//check decimalpoint, prevent adding more than 1
 				if (this.currentNumber.indexOf(".") > -1 && value == ".") {
 					return;
-				}
-				if (this.currentNumber.indexOf("-") > -1 && value == "-") {
-					return;
-				}
+				} 
 				//save currentnumber
 				this.currentNumber += value;
 				console.log("nyaste numret: " + this.currentNumber);
 				//show currentnumber in display
 				this.display = this.currentNumber;
+
+                
 			},
 			opp: function (value) {
 				//if a operator is pressed
@@ -54,6 +51,7 @@ window.addEventListener('load', () => {
 					this.lastNumber = this.currentNumber;
 					console.log("senaste numret:" + this.lastNumber)
 					//clear firstnumber
+                    this.currentNumber = '';
 				}
 			},
 			equal: function (value) {
