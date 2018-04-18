@@ -19,52 +19,62 @@ appen ska versionshanteras med Git och vara publicerad på GitHub
         //Define data
 		data: {
             display: '',
+            lastNumber: '',
             currentNumber: '',
-            calculate: [],
             result : '',
-            operator: ''
+            operator: '',
+            decimalAdded: false,
 		},
         
         //Define methods/functions
 		methods: {
             
-            //Get number values (REWRITE THIS FUNCTION CAUSE IT SUX)
 			value: function (value) {
                 
+                //save currenumber
                 this.currentNumber += value;
                 
+                console.log("nyaste numret: " + this.currentNumber);
+                
+                //show currentnumber in display
                 this.display = this.currentNumber;
-            
+                   
 			},
             
             opp: function(value) {
                 
-                if(value === "+") {
+                //if a operator is pressed
+                if(value !== "+" || "-" || "*" || "/") {
                     
-                    this.calculate.push(this.currentNumber);
-                    this.calculate.push(value);
+                    this.operator = value;
                     
+                    console.log(this.operator);
+                    
+                    //move the first number to lastnumber
+                    this.lastNumber = this.currentNumber;
+                    
+                    console.log("senaste numret:" + this.lastNumber)
+                    
+                    //clear firstnumber
                     this.currentNumber = '';
-                    
-                    this.display = this.currentNumber;
-                    
-                    console.log(this.calculate);
-
-                } else if (value === "=") {
-                    
-                    this.calculate.push(this.currentNumber);
-                    
-                    for (i = 0; i < this.calculate.length; i++) {
-
-                        
-                    }
-                    
-                }
-
+                } 
             },
-            
-            equal: function() {
+            equal: function(value) {
                 
+                //when equal is pressed, check status of operator
+                if (this.operator === "+") {
+                    this.result = Number(this.lastNumber) + Number(this.currentNumber);
+                } else if (this.operator === "-") {
+                    this.result = Number(this.lastNumber) - Number(this.currentNumber);
+                } else if (this.operator === "*") {
+                    this.result = Number(this.lastNumber) * Number(this.currentNumber);
+                } else if (this.operator === "/") {
+                    this.result = Number(this.lastNumber) / Number(this.currentNumber);
+                }
+                
+                this.currentNumber = this.result;
+                
+                this.display = this.result;
                 
             },
             //Single function raised in two
@@ -84,8 +94,11 @@ appen ska versionshanteras med Git och vara publicerad på GitHub
 			},
             //clear numbers and result
 			clear: function () {
-				this.result = '';
-				this.num = '';
+				this.display = '',
+                this.lastNumber = '',
+                this.currentNumber = '',
+                this.result = '',
+                this.operator = ''
 			},
 		}
 	});
