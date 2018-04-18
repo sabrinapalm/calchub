@@ -8,80 +8,80 @@ knapp för att räkna ut ett resultat (=)
 appen ska ha en tydlig design (förklara för användaren hur man förväntas använda den, användaren ska inte behöva gissa vad en knapp gör)
 appen ska versionshanteras med Git och vara publicerad på GitHub
 
-*/window.addEventListener('load', () => {
-    
-    //Make new Vue object
+*/
+window.addEventListener('load', () => {
+	//Make new Vue object
 	new Vue({
-        
-        //Get element
+		//Get element
 		el: '.calculator',
-        
-        //Define data
+		//Define data
 		data: {
-            display: '',
-            lastNumber: '',
-            currentNumber: '',
-            result : '',
-            operator: '',
-            decimalAdded: false,
+			display: '',
+			lastNumber: '',
+			currentNumber: '',
+			result: '',
+			operator: ''
 		},
-        
-        //Define methods/functions
+		//Define methods/functions
 		methods: {
-            
 			value: function (value) {
                 
-                //save currenumber
-                this.currentNumber += value;
-                
-                console.log("nyaste numret: " + this.currentNumber);
-                
-                //show currentnumber in display
-                this.display = this.currentNumber;
-                   
-			},
-            
-            opp: function(value) {
-                
-                //if a operator is pressed
-                if(value !== "+" || "-" || "*" || "/") {
-                    
-                    this.operator = value;
-                    
-                    console.log(this.operator);
-                    
-                    //move the first number to lastnumber
-                    this.lastNumber = this.currentNumber;
-                    
-                    console.log("senaste numret:" + this.lastNumber)
-                    
-                    //clear firstnumber
+                if (this.operator) {
                     this.currentNumber = '';
-                } 
-            },
-            equal: function(value) {
-                
-                //when equal is pressed, check status of operator
-                if (this.operator === "+") {
-                    this.result = Number(this.lastNumber) + Number(this.currentNumber);
-                } else if (this.operator === "-") {
-                    this.result = Number(this.lastNumber) - Number(this.currentNumber);
-                } else if (this.operator === "*") {
-                    this.result = Number(this.lastNumber) * Number(this.currentNumber);
-                } else if (this.operator === "/") {
-                    this.result = Number(this.lastNumber) / Number(this.currentNumber);
                 }
                 
-                this.currentNumber = this.result;
+				//check decimalpoint, add 0 if starting with decimalpoint
+				if (this.currentNumber.length == 0 && value == ".") {
+					value = "0.";
+				}
+				//check decimalpoint, prevent adding more than 1
+				if (this.currentNumber.indexOf(".") > -1 && value == ".") {
+					return;
+				}
                 
-                this.display = this.result;
+                if (this.currentNumber.indexOf("-") > -1 && value == "-") {
+					return;
+				}
                 
-            },
-            //Single function raised in two
+				//save currentnumber
+				this.currentNumber += value;
+				console.log("nyaste numret: " + this.currentNumber);
+				//show currentnumber in display
+				this.display = this.currentNumber;
+
+			},
+			opp: function (value) {
+                
+				//if a operator is pressed
+				if (value !== "+" || "-" || "*" || "/") {
+					this.operator = value;
+					console.log(this.operator);
+					//move the first number to lastnumber
+					this.lastNumber = this.currentNumber;
+					console.log("senaste numret:" + this.lastNumber)
+					//clear firstnumber
+					
+				}
+			},
+			equal: function (value) {
+				//when equal is pressed, check status of operator
+				if (this.operator === "+") {
+					this.result = Number(this.lastNumber) + Number(this.currentNumber);
+				} else if (this.operator === "-") {
+					this.result = Number(this.lastNumber) - Number(this.currentNumber);
+				} else if (this.operator === "*") {
+					this.result = Number(this.lastNumber) * Number(this.currentNumber);
+				} else if (this.operator === "/") {
+					this.result = Number(this.lastNumber) / Number(this.currentNumber);
+				}
+				this.currentNumber = this.result;
+				this.display = this.result;
+			},
+			/*Single function raised in two
 			raisedInTwo: function () {
 				this.result = Math.pow(this.result, 2)
 			},
-            //Single function square root
+			//Single function square root
 			squareRoot: function () {
 				if (this.result < 0) {
 					this.disableButton = true;
@@ -91,37 +91,15 @@ appen ska versionshanteras med Git och vara publicerad på GitHub
 					this.disableButton = false;
 					console.log('enabled')
 				}
-			},
-            //clear numbers and result
+			},*/
+			//clear numbers and result
 			clear: function () {
 				this.display = '',
-                this.lastNumber = '',
-                this.currentNumber = '',
-                this.result = '',
-                this.operator = ''
+				this.lastNumber = '',
+				this.currentNumber = '',
+				this.result = '',
+				this.operator = ''
 			},
 		}
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });

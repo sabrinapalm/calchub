@@ -12,7 +12,7 @@
     <body>
         <div class="calculator">
             <header>
-                <div class="screen" v-model="display"> {{display}} </div>
+                <div class="screen"> {{display}} </div>
             </header>
             <div class="keypads">
                     <div class="row">
@@ -20,25 +20,25 @@
                         <span v-on:click="opp('/')">/</span>
                     </div>
                     <div class="row">
-                        <span v-on:click="value('1')">1</span>
-                        <span v-on:click="value('2')">2</span>
-                        <span v-on:click="value('3')">3</span>
+                        <span v-on:click="value(1)">1</span>
+                        <span v-on:click="value(2)">2</span>
+                        <span v-on:click="value(3)">3</span>
                         <span v-on:click="opp('*')">*</span>
                     </div>
                     <div class="row">
-                        <span v-on:click="value('4')">4</span>
-                        <span v-on:click="value('5')">5</span>
-                        <span v-on:click="value('6')">6</span>
-                        <span v-on:click="opp('-')">-</span>
+                        <span v-on:click="value(4)">4</span>
+                        <span v-on:click="value(5)">5</span>
+                        <span v-on:click="value(6)">6</span>
+                        <span v-on:click="opp,value('-')">-</span>
                     </div>
                     <div class="row">
-                        <span v-on:click="value('7')">7</span>
-                        <span v-on:click="value('8')">8</span>
-                        <span v-on:click="value('9')">9</span>
+                        <span v-on:click="value(7)">7</span>
+                        <span v-on:click="value(8)">8</span>
+                        <span v-on:click="value(9)">9</span>
                         <span v-on:click="opp('+')">+</span>
                     </div>
                     <div class="row">
-                        <span v-on:click="value('0')" style="flex: 2 2;">0</span>
+                        <span v-on:click="value(0)" style="flex: 2 2;">0</span>
                         <span v-on:click="value('.')">.</span>
                         <span v-on:click="equal('=')" class="important">=</span>
                     </div>
